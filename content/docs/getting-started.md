@@ -7,34 +7,21 @@ weight: 1
 
 ## 环境要求
 
-- [Hugo Extended](https://gohugo.io/installation/)（本仓库使用 Extended 版）
+- Hugo Extended（本仓库本地开发已用 `v0.164.0` 验证）
 - Git
 
-不需要安装 Go：主题位于 `themes/hugo-book`，日常预览与构建不依赖 Go。
+本方案**不需要**安装 Go：主题位于 `themes/hugo-book`，未使用 Hugo Modules。
 
-## 本地预览
+## 克隆与预览
 
 ```bash
+git clone https://github.com/forever-funny/forever-funny.github.io.git
+cd forever-funny.github.io
 hugo server -D
 ```
 
-浏览器打开提示的本地地址（默认 `http://localhost:1313/`）。
-
 ## 新增文档
 
-1. 在 `content/docs/` 下新建 Markdown 文件
-2. 填写 front matter（至少包含 `title`）
-3. 保存后，Hugo 会自动刷新页面与侧边栏
-
-示例：
-
-```markdown
----
-title: 我的新页面
-weight: 10
----
-
-# 我的新页面
-
-正文内容……
-```
+1. 在 `content/docs/` 下创建 `.md` 文件
+2. 写好 front matter（至少包含 `title`，可用 `weight` 控制排序）
+3. 保存后本地预览会自动刷新

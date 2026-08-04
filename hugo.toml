@@ -8,10 +8,6 @@ defaultContentLanguage = 'zh-cn'
 disablePathToLower = true
 enableGitInfo = true
 
-[frontmatter]
-  lastmod = [':git', ':fileModTime', 'lastmod', 'date']
-
-# Needed for mermaid/katex shortcodes
 [markup]
   [markup.goldmark.renderer]
     unsafe = true

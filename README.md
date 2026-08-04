@@ -1,10 +1,10 @@
 # Forever Funny
 
-基于 [Hugo](https://gohugo.io/) + [hugo-book](https://github.com/alex-shpak/hugo-book) 的个人文档站。
+基于 **Hugo + hugo-book** 的个人文档站。
 
 - 本地工程目录：`forever-funny`
 - 远程仓库名：`forever-funny.github.io`（GitHub User Site）
-- 预期线上地址：<https://forever-funny.github.io/>
+- 预期线上地址：https://forever-funny.github.io/
 
 ## 环境准备
 
@@ -31,60 +31,76 @@ cd forever-funny
 hugo server -D
 ```
 
-浏览器打开提示地址（默认 `http://localhost:1313/`）。
+浏览器打开终端提示的地址（默认 `http://localhost:1313/`）。
 
-生产构建：
+本地构建：
 
 ```powershell
 hugo --minify
 ```
 
-产物在 `public/`（已加入 `.gitignore`，勿提交）。
+产物在 `public/`（已加入 `.gitignore`，不要提交）。
+
+## 主题说明
+
+主题 [hugo-book](https://github.com/alex-shpak/hugo-book) 已放入 `themes/hugo-book/`（仓库内 vendored，避免本机拉取 git submodule 不稳定）。更新主题时可替换该目录内容。
 
 ## 文档怎么写
 
-- 首页：`content/_index.md`
-- 文档正文：`content/docs/*.md`（侧边栏由此自动生成）
-- 站点配置：`hugo.toml`
-- 主题目录：`themes/hugo-book`（已内置 alex-shpak/hugo-book，无需再装 Go / Modules）
+- 文档放在 `content/docs/`
+- 每篇 Markdown 使用 front matter，例如：
 
-新建页面示例：
-
-```markdown
+```yaml
 ---
 title: 页面标题
 weight: 10
 ---
-
-# 页面标题
-
-正文……
 ```
 
-## 发布到 GitHub Pages（你稍后完成）
+- `weight` 控制侧边栏排序（越小越靠前）
+- 更多约定见站点内「写作规范」页
 
-本仓库已预置 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)，push 到 `main` 后可自动构建并部署。
+## 发布到 GitHub Pages（稍后你自己完成）
 
-1. 在 GitHub 账号 **`forever-funny`** 下创建空仓库 **`forever-funny.github.io`**（不要勾选自动生成 README）。
-2. 在本机添加远程并推送：
+本仓库已预置 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)，**不会**自动创建远程仓库。你需要：
 
-```powershell
+### 1. 在 GitHub 创建空仓库
+
+账号/组织：`forever-funny`  
+仓库名：**`forever-funny.github.io`**（User Site 要求仓库名等于 `<账号>.github.io`）
+
+### 2. 关联远程并推送
+
+在本地工程根目录：
+
+```bash
 git remote add origin https://github.com/forever-funny/forever-funny.github.io.git
 git add .
-git commit -m "Initial Hugo docs site"
+git commit -m "Initial Hugo documentation site"
 git push -u origin main
 ```
 
-3. 打开仓库 **Settings → Pages → Build and deployment → Source**，选择 **GitHub Actions**。
-4. 在 **Actions** 中确认 workflow 成功；站点发布在 <https://forever-funny.github.io/>。
+### 3. 启用 Pages
 
-> User Site 要求：仓库名必须严格等于 `<账号名>.github.io`。若账号不是 `forever-funny`，请同步修改仓库名与 `hugo.toml` 中的 `baseURL` / `BookRepo`。
+仓库 → **Settings** → **Pages** → **Build and deployment** → **Source** 选择 **GitHub Actions**。
 
-## 主题说明
+### 4. 确认上线
 
-因本机拉取 git submodule 不稳定，主题以文件形式放在 `themes/hugo-book`（源自 [alex-shpak/hugo-book](https://github.com/alex-shpak/hugo-book)）。若你希望改为 submodule，可自行替换：
+Actions 跑通后，站点应发布在：
 
-```powershell
-Remove-Item -Recurse -Force themes/hugo-book
-git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
+https://forever-funny.github.io/
+
+> 若实际 GitHub 用户名不是 `forever-funny`，则不能把仓库命名为 `forever-funny.github.io` 作为 User Site；需要把账号名与仓库名改成一致的 `<user>.github.io`，并同步修改 `hugo.toml` 中的 `baseURL` / `BookRepo`。
+
+## 目录结构（摘要）
+
+```text
+forever-funny/
+├── .github/workflows/pages.yml   # Pages 自动部署
+├── content/
+│   ├── _index.md                 # 首页
+│   └── docs/                     # 文档（侧边栏）
+├── themes/hugo-book/             # hugo-book 主题
+├── hugo.toml                     # 站点配置
+└── README.md
 ```
