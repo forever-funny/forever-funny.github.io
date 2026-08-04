@@ -1,0 +1,37 @@
+baseURL = 'https://forever-funny.github.io/'
+locale = 'zh-cn'
+title = 'Forever Funny'
+theme = 'hugo-book'
+defaultContentLanguage = 'zh-cn'
+
+# Book configuration
+disablePathToLower = true
+# 有首次 commit 后再改为 true，可启用「最后修改」等 Git 信息
+enableGitInfo = false
+
+# 空仓库时避免 :git lastmod 触发构建失败
+[frontmatter]
+  lastmod = [':fileModTime', 'lastmod', 'modified', 'date', 'publishdate']
+
+# Needed for mermaid/katex shortcodes
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+  [markup.highlight]
+    style = 'base16-snazzy'
+
+[menu]
+  [[menu.after]]
+    name = 'GitHub'
+    url = 'https://github.com/forever-funny/forever-funny.github.io'
+    weight = 10
+
+[params]
+  BookTheme = 'light'
+  BookToC = true
+  BookSection = 'docs'
+  BookRepo = 'https://github.com/forever-funny/forever-funny.github.io'
+  BookSearch = true
+  BookComments = false
