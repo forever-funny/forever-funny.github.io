@@ -6,12 +6,10 @@ defaultContentLanguage = 'zh-cn'
 
 # Book configuration
 disablePathToLower = true
-# 有首次 commit 后再改为 true，可启用「最后修改」等 Git 信息
-enableGitInfo = false
+enableGitInfo = true
 
-# 空仓库时避免 :git lastmod 触发构建失败
 [frontmatter]
-  lastmod = [':fileModTime', 'lastmod', 'modified', 'date', 'publishdate']
+  lastmod = [':git', ':fileModTime', 'lastmod', 'date']
 
 # Needed for mermaid/katex shortcodes
 [markup]
