@@ -1,31 +1,102 @@
 baseURL = 'https://forever-funny.github.io/'
-locale = 'zh-cn'
 title = 'Forever Funny'
-theme = 'hugo-book'
 defaultContentLanguage = 'zh-cn'
-
-# Book configuration
-disablePathToLower = true
+defaultContentLanguageInSubdir = true
 enableGitInfo = true
+enableRobotsTXT = true
+
+[module]
+  [[module.imports]]
+    path = 'github.com/imfing/hextra'
+
+[languages.zh-cn]
+  label = '中文'
+  locale = 'zh-cn'
+  weight = 1
+  title = 'Forever Funny'
+  contentDir = 'content/zh-cn'
+
+[languages.en]
+  label = 'English'
+  locale = 'en'
+  weight = 2
+  title = 'Forever Funny'
+  contentDir = 'content/en'
 
 [markup]
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.highlight]
+    noClasses = false
   [markup.tableOfContents]
     startLevel = 1
-  [markup.highlight]
-    style = 'base16-snazzy'
+    endLevel = 3
 
-[menu]
-  [[menu.after]]
+[languages.zh-cn.menu]
+  [[languages.zh-cn.menu.main]]
+    name = '文档'
+    pageRef = '/docs'
+    weight = 1
+  [[languages.zh-cn.menu.main]]
+    name = 'Search'
+    weight = 2
+    [languages.zh-cn.menu.main.params]
+      type = 'search'
+  [[languages.zh-cn.menu.main]]
     name = 'GitHub'
     url = 'https://github.com/forever-funny/forever-funny.github.io'
-    weight = 10
+    weight = 3
+    [languages.zh-cn.menu.main.params]
+      icon = 'github'
+  [[languages.zh-cn.menu.main]]
+    name = 'Theme'
+    weight = 4
+    [languages.zh-cn.menu.main.params]
+      type = 'theme-toggle'
+  [[languages.zh-cn.menu.main]]
+    name = 'Language'
+    weight = 5
+    [languages.zh-cn.menu.main.params]
+      type = 'language-switch'
+
+[languages.en.menu]
+  [[languages.en.menu.main]]
+    name = 'Docs'
+    pageRef = '/docs'
+    weight = 1
+  [[languages.en.menu.main]]
+    name = 'Search'
+    weight = 2
+    [languages.en.menu.main.params]
+      type = 'search'
+  [[languages.en.menu.main]]
+    name = 'GitHub'
+    url = 'https://github.com/forever-funny/forever-funny.github.io'
+    weight = 3
+    [languages.en.menu.main.params]
+      icon = 'github'
+  [[languages.en.menu.main]]
+    name = 'Theme'
+    weight = 4
+    [languages.en.menu.main.params]
+      type = 'theme-toggle'
+  [[languages.en.menu.main]]
+    name = 'Language'
+    weight = 5
+    [languages.en.menu.main.params]
+      type = 'language-switch'
 
 [params]
-  BookTheme = 'light'
-  BookToC = true
-  BookSection = 'docs'
-  BookRepo = 'https://github.com/forever-funny/forever-funny.github.io'
-  BookSearch = true
-  BookComments = false
+  [params.navbar]
+    displayTitle = true
+    displayLogo = false
+  [params.theme]
+    default = 'system'
+    displayToggle = true
+  [params.footer]
+    displayCopyright = false
+    displayPoweredBy = true
+  [params.editURL]
+    enable = false
+  [params.search]
+    enable = true

@@ -40,6 +40,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      # 主题已 vendor 到 _vendor/；有 go.sum 时可离线构建
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
