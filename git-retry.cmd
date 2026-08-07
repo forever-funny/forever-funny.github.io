@@ -4,7 +4,7 @@ REM git-retry.cmd - retry git push / clone / pull on unstable network
 REM Same logic as git-retry.sh; run directly in cmd.exe
 REM Usage: git-retry.cmd --help
 
-set "INTERVAL=5"
+set "INTERVAL=1"
 set "TIMEOUT=120"
 set "MAX_RETRIES=0"
 set "REMOTE=origin"
@@ -152,7 +152,7 @@ echo   clone  Retry git clone from URL; keep retrying on fail/timeout
 echo   pull   Retry git pull forever in current repo
 echo.
 echo Options:
-echo   -i, --interval ^<sec^>   Wait after failure, default 5
+echo   -i, --interval ^<sec^>   Wait after failure, default 1
 echo   -t, --timeout ^<sec^>    Per-attempt timeout, default 120; 0 = no limit
 echo   -n, --max-retries ^<N^>  Max attempts, default 0 = infinite
 echo   -d, --depth ^<N^>        Shallow clone depth (clone only)

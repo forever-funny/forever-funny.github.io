@@ -5,7 +5,7 @@
 set -u
 
 # 默认参数
-INTERVAL=5          # 失败后等待秒数
+INTERVAL=1          # 失败后等待秒数
 TIMEOUT=120         # 单次操作超时秒数（0 表示不超时）
 MAX_RETRIES=0       # 0 = 无限重试
 REMOTE=origin
@@ -26,7 +26,7 @@ usage() {
   pull   在当前仓库目录无限重试 git pull
 
 选项:
-  -i, --interval <秒>   失败后等待时间，默认 5
+  -i, --interval <秒>   失败后等待时间，默认 1
   -t, --timeout <秒>    单次操作超时，默认 120；0 表示不限时
   -n, --max-retries <N> 最大重试次数，默认 0（无限）
   -d, --depth <N>       clone 时浅克隆深度（仅 clone）
