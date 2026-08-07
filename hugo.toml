@@ -9,6 +9,12 @@ enableRobotsTXT = true
   [[module.imports]]
     path = 'github.com/imfing/hextra'
 
+# AI / Markdown 可读输出（Hextra 已定义 outputFormats.llms / markdown）
+[outputs]
+  home = ['html', 'llms']
+  page = ['html', 'markdown']
+  section = ['html', 'markdown']
+
 [languages.zh-cn]
   label = '中文'
   locale = 'zh-cn'
@@ -38,24 +44,28 @@ enableRobotsTXT = true
     pageRef = '/docs'
     weight = 1
   [[languages.zh-cn.menu.main]]
-    name = 'Search'
+    name = '博客'
+    pageRef = '/blog'
     weight = 2
+  [[languages.zh-cn.menu.main]]
+    name = 'Search'
+    weight = 3
     [languages.zh-cn.menu.main.params]
       type = 'search'
   [[languages.zh-cn.menu.main]]
     name = 'GitHub'
     url = 'https://github.com/forever-funny/forever-funny.github.io'
-    weight = 3
+    weight = 4
     [languages.zh-cn.menu.main.params]
       icon = 'github'
   [[languages.zh-cn.menu.main]]
     name = 'Theme'
-    weight = 4
+    weight = 5
     [languages.zh-cn.menu.main.params]
       type = 'theme-toggle'
   [[languages.zh-cn.menu.main]]
     name = 'Language'
-    weight = 5
+    weight = 6
     [languages.zh-cn.menu.main.params]
       type = 'language-switch'
 
@@ -65,38 +75,64 @@ enableRobotsTXT = true
     pageRef = '/docs'
     weight = 1
   [[languages.en.menu.main]]
-    name = 'Search'
+    name = 'Blog'
+    pageRef = '/blog'
     weight = 2
+  [[languages.en.menu.main]]
+    name = 'Search'
+    weight = 3
     [languages.en.menu.main.params]
       type = 'search'
   [[languages.en.menu.main]]
     name = 'GitHub'
     url = 'https://github.com/forever-funny/forever-funny.github.io'
-    weight = 3
+    weight = 4
     [languages.en.menu.main.params]
       icon = 'github'
   [[languages.en.menu.main]]
     name = 'Theme'
-    weight = 4
+    weight = 5
     [languages.en.menu.main.params]
       type = 'theme-toggle'
   [[languages.en.menu.main]]
     name = 'Language'
-    weight = 5
+    weight = 6
     [languages.en.menu.main.params]
       type = 'language-switch'
 
 [params]
   [params.navbar]
     displayTitle = true
+    # 放入 static/images/logo.svg 后改为 true
     displayLogo = false
+    [params.navbar.logo]
+      path = 'images/logo.svg'
+      dark = 'images/logo-dark.svg'
+      width = 40
+      height = 20
   [params.theme]
     default = 'system'
     displayToggle = true
   [params.footer]
     displayCopyright = false
-    displayPoweredBy = true
+    displayPoweredBy = false
   [params.editURL]
-    enable = false
+    enable = true
+    base = 'https://github.com/forever-funny/forever-funny.github.io/edit/main/'
   [params.search]
     enable = true
+  # 公告条：需要时取消注释
+  # [params.banner]
+  #   key = 'announcement-1'
+  #   message = '站点公告，支持 [Markdown](/zh-cn/docs/) 链接。'
+  [params.page]
+    displayPagination = true
+    [params.page.contextMenu]
+      enable = true
+  [params.blog]
+    [params.blog.list]
+      displayTags = true
+      pagerSize = 10
+
+[taxonomies]
+  tag = 'tags'

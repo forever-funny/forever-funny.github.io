@@ -1,6 +1,7 @@
 ---
 title: 入门指南
 weight: 1
+description: 环境要求、本地预览与新增文档
 ---
 
 ## 环境要求

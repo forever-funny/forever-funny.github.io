@@ -34,7 +34,7 @@ cd forever-funny
 hugo server -D
 ```
 
-浏览器打开终端提示的地址（默认 `http://localhost:1313/`）。
+浏览器打开终端提示的地址（默认 `http://localhost:1313/` → 通常跳到 `/zh-cn/`）。
 
 本地构建：
 
@@ -46,9 +46,22 @@ hugo --minify
 
 ## 文档怎么写
 
-- 中文：`content/zh-cn/`；英文：`content/en/`（默认语言 `zh-cn`，URL 带语言前缀）
-- 文档正文在各语言的 `docs/` 下；每篇 Markdown 使用 front matter（`title` / `weight`）
-- RUM 知识库在 `content/zh-cn/docs/Digital Experience/rum/`
+- 中文：`content/zh-cn/`；英文：`content/en/`（URL 带语言前缀）
+- 正式文档：`docs/`；变更日志：`blog/`
+- 目录名用 kebab-case；详见各语言「写作规范」
+- RUM 知识库：`content/zh-cn/docs/digital-experience/rum/`（每篇文档须含 front matter `title`）
+
+## 已预留能力
+
+| 能力 | 位置 / 开关 |
+|------|-------------|
+| 多语言 | `content/zh-cn`、`content/en` |
+| Logo | `static/images/` + `params.navbar.logo`（`displayLogo` 暂为 false） |
+| 自定义样式 | `assets/css/custom.css` |
+| Edit on GitHub | `params.editURL` |
+| llms.txt / Markdown | `[outputs]` + 页面「复制 Markdown」菜单 |
+| 公告条 | `params.banner`（默认注释） |
+| 博客 section | `content/*/blog/` |
 
 ## 发布到 GitHub Pages
 
@@ -63,10 +76,13 @@ hugo --minify
 ```text
 forever-funny/
 ├── .github/workflows/pages.yml
+├── archetypes/default.md
+├── assets/css/custom.css
 ├── content/
-│   ├── _index.md
-│   └── docs/
-├── _vendor/                      # Hextra 等 module 缓存
+│   ├── zh-cn/          # docs + blog
+│   └── en/
+├── static/images/
+├── _vendor/            # Hextra module 缓存
 ├── hugo.toml
 ├── go.mod / go.sum
 └── README.md

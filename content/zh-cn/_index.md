@@ -10,4 +10,5 @@ toc: false
 {{< cards >}}
   {{< card link="docs" title="文档" icon="book-open" subtitle="浏览全部文档与 RUM 知识库" >}}
   {{< card link="docs/getting-started" title="入门指南" icon="academic-cap" subtitle="本地预览与写作约定" >}}
+  {{< card link="blog" title="博客" icon="newspaper" subtitle="变更说明与公告（预留）" >}}
 {{< /cards >}}
