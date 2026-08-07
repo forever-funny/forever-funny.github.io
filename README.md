@@ -71,6 +71,20 @@ hugo --minify
 2. Settings → Pages → Source 选 **GitHub Actions**
 3. 站点发布在 https://forever-funny.github.io/
 
+网络不稳时可用重试脚本（以脚本所在目录为仓库根，失败按间隔重试直至成功）：
+
+```bash
+./git-retry.sh push          # 默认: git push -u origin HEAD
+./git-retry.sh pull          # 默认: git pull
+```
+
+```bat
+git-retry.bat push
+git-retry.bat pull
+```
+
+环境变量：`GIT_RETRY_INTERVAL`（秒，默认 1）、`GIT_REMOTE`（push 无参时默认 `origin`）。
+
 ## 目录结构（摘要）
 
 ```text
@@ -82,7 +96,9 @@ forever-funny/
 │   ├── zh-cn/          # docs + blog
 │   └── en/
 ├── static/images/
+├── static/files/
 ├── _vendor/            # Hextra module 缓存
+├── git-retry.sh / git-retry.bat
 ├── hugo.toml
 ├── go.mod / go.sum
 └── README.md
