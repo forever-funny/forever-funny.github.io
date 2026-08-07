@@ -2,8 +2,6 @@
 title: SDK 启动概率与用户白名单完整逻辑
 ---
 
-# SDK 启动概率与用户白名单完整逻辑
-
 > 本文整合「配置全链路」（前端 → 后端 → 持久化）与「运行时判定 + 交付场景七问七答」两份原始分析，覆盖 SDK 启动概率与用户白名单的**产品规则、前端配置、持久化存储、运行时判定、缓存机制、时序流程、交付 FAQ、代码索引**完整链路。
 > 代码根目录：`D:\Bonree\CodeProject\newonexm`（`controller\controller` 服务端判定、`framework\plugins\rum` 配置存储、`view\rum` 前端配置页）。
 

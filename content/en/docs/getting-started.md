@@ -3,8 +3,6 @@ title: Getting started
 weight: 1
 ---
 
-# Getting started
-
 ## Requirements
 
 - Hugo Extended (verified locally with `v0.164.0`)

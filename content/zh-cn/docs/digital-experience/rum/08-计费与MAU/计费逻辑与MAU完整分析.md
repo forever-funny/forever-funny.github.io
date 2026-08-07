@@ -2,8 +2,6 @@
 title: 计费逻辑与 MAU 完整分析
 ---
 
-# 计费逻辑与 MAU 完整分析
-
 > 工程版本：newonexm 仓库 `controller/controller` 模块当前主干
 > 核心包：`com.bonree.one.controller.service.config.rum.license`、`com.bonree.one.controller.service.config.rum.impl`、`com.bonree.one.controller.service.config.rum.cache`、`com.bonree.one.controller.task`
 

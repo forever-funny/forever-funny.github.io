@@ -2,8 +2,6 @@
 title: SQL 与类型问题分析
 ---
 
-# SQL 与类型问题分析
-
 > 分析范围：`framework/plugins/rum` 模块中 rum-core 的 ClickHouse/Snapshot SQL 时间条件问题，以及 rum-database/rum-core 中实体实例 ID（instanceId）的类型一致性问题。
 
 ---

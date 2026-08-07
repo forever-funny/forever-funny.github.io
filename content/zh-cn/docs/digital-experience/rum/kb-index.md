@@ -1,11 +1,9 @@
 ---
-title: 关键词路由索引
+title: RUM 知识库关键词路由索引
 sidebar:
   exclude: true
 llms: false
 ---
-
-# RUM 知识库关键词路由索引
 
 > 本文件是知识库的路由入口（文件名 `kb-index.md`，原 `INDEX.md`；在 Windows 大小写不敏感文件系统上不可命名为 INDEX/index，否则 Hugo 会把本节当成 leaf bundle）。模型根据用户问题中的关键词，在下表中找到对应文档路径，然后读取该文档。
 >

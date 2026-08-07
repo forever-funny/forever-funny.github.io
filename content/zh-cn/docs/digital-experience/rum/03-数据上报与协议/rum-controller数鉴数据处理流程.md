@@ -2,8 +2,6 @@
 title: rum-controller 数据处理流程与特殊处理逻辑
 ---
 
-# rum-controller 数据处理流程与特殊处理逻辑
-
 本文整合两类内容：**数鉴（DataSee）数据接收、处理、转换与转发完整流程**；以及 **rum-controller 在数据上报、解析、入库、转发、查询各阶段的特殊处理逻辑**（过滤、兼容、降级、分流、采样、去重、异常保护）。
 
 涉及代码仓：`controller/rum-controller`（主） + `framework/plugins/rum`（查询侧 `rum-core` / `rum-database`），均位于 `newonexm` 仓库。

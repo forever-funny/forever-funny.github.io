@@ -2,8 +2,6 @@
 title: 'RUM 模块 —— 设备品牌/机型纠偏与 `t_bas_brand` 字典'
 ---
 
-# RUM 模块 —— 设备品牌/机型纠偏与 `t_bas_brand` 字典
-
 > 本文梳理 Upload/Config 链路中 **设备品牌、机型** 如何解析、纠偏并写入 ClickHouse `client_brand_name` / `client_device_name`，以及与 MySQL `br_one.t_bas_brand`、`t_bas_brand_check` 的关系。
 >
 > 代码根目录：`D:\Bonree\CodeProject\newone`  

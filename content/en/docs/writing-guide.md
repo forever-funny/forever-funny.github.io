@@ -4,8 +4,6 @@ weight: 2
 description: Directory layout, URL rules, front matter, and i18n conventions
 ---
 
-# Writing guide
-
 ## Content layout
 
 | Path | Purpose |
@@ -13,7 +11,7 @@ description: Directory layout, URL rules, front matter, and i18n conventions
 | `content/zh-cn/` | Chinese (default) |
 | `content/en/` | English |
 | `content/*/docs/` | Documentation (sidebar) |
-| `content/*/blog/` | Changelog / announcements |
+| `content/*/blog/` | Blog (`useful-websites` / `tech-books` / `others`) |
 | `static/images/` | Logos and images |
 | `assets/css/custom.css` | Theme overrides |
 | `hugo.toml` | Site config |
@@ -37,7 +35,15 @@ title: Page title
 weight: 10
 description: One-line summary
 ---
+
+## First section
+
+Start the body at `##` — do **not** repeat `# Page title` in the Markdown body.
 ```
+
+## No duplicate H1
+
+Hextra renders `title` as the page `<h1>`. A matching `#` heading in the body creates a duplicate title at the top of the page.
 
 ## Nested sections
 

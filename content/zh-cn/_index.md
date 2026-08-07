@@ -3,8 +3,6 @@ title: Forever Funny
 toc: false
 ---
 
-# Forever Funny
-
 个人文档站，记录职业生涯的点点滴滴，基于 **Hugo + Hextra**。
 
 {{< cards >}}

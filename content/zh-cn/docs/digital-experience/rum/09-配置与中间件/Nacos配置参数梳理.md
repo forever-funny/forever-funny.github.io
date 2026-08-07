@@ -2,8 +2,6 @@
 title: Nacos 配置参数梳理
 ---
 
-# Nacos 配置参数梳理
-
 > 本文档整合 RUM 模块（`controller/rum-controller` 与 `framework/plugins/rum`）全部 Nacos 配置参数清单与配置下发逻辑，作为完整的独立技术参考。所有路径统一为 newonexm 仓库路径。
 
 ---

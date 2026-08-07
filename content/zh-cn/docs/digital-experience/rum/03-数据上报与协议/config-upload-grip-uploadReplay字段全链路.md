@@ -2,8 +2,6 @@
 title: RUM config / upload / grip / uploadReplay 字段全链路梳理
 ---
 
-# RUM config / upload / grip / uploadReplay 字段全链路梳理
-
 ## 1. 背景与范围
 
 - 本文覆盖 4 类接口/协议：`/rum/v1/config`、`/upload`、`/rum/v1/grip`、`/uploadReplay`。

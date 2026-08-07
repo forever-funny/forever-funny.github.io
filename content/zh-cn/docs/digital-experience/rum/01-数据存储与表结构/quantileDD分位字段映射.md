@@ -2,8 +2,6 @@
 title: quantileDD 分位字段与 RUM 页面映射
 ---
 
-# quantileDD 分位字段与 RUM 页面映射
-
 > **基准脚本**：`script/one_framework_rum/INIT/clickhouse/all/one_rum_datasource_gran.sql`
 > **后端模块**：`framework/plugins/rum/`
 > **前端模块**：`view/rum/`

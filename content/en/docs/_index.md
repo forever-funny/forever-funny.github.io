@@ -3,8 +3,6 @@ title: Docs
 weight: 1
 ---
 
-# Docs
-
 Write and organize documentation under this section. The sidebar is generated from pages in `content/en/docs/`.
 
 {{< cards >}}

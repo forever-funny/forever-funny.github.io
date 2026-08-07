@@ -1,11 +1,9 @@
 ---
-title: UPDATE-PROTOCOL
+title: 知识库更新协议
 sidebar:
   exclude: true
 llms: false
 ---
-
-# 知识库更新协议
 
 > 本文件定义知识库的更新触发条件、更新流程和修订记录格式。
 >
@@ -75,14 +73,16 @@ llms: false
 
 ```markdown
 ---
-title: 页面标题（侧栏与浏览器标题；建议与正文一级标题一致）
+title: 页面标题（侧栏、浏览器标题与页眉 h1；Hextra 会自动渲染）
 weight: 10
 description: 一句话摘要（可选但推荐）
 ---
 
-# 页面标题
+正文从二级标题开始，**不要**再写与 `title` 重复的 `# 页面标题`。
 
-正文……
+## 背景
+
+……
 
 ## 修订记录
 

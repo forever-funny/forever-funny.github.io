@@ -2,8 +2,6 @@
 title: 接口文档：查询会话列表 sessionList
 ---
 
-# 接口文档：查询会话列表 sessionList
-
 ## 1. 接口概览
 
 | 属性 | 说明 |

@@ -4,8 +4,6 @@ weight: 2
 description: 目录约定、URL、front matter 与多语言写作规范
 ---
 
-# 写作规范
-
 ## 目录结构
 
 | 路径 | 用途 |
@@ -13,8 +11,9 @@ description: 目录约定、URL、front matter 与多语言写作规范
 | `content/zh-cn/` | 中文内容（默认语言） |
 | `content/en/` | 英文内容 |
 | `content/*/docs/` | 正式文档（侧边栏） |
-| `content/*/blog/` | 变更日志 / 公告（可选） |
+| `content/*/blog/` | 博客（子目录：`useful-websites` / `tech-books` / `others`） |
 | `static/images/` | logo 与插图 |
+| `static/files/` | PDF / Word 等附件（按栏目分子目录，如 `files/blog/tech-books/`） |
 | `assets/css/custom.css` | 站点样式覆盖 |
 | `hugo.toml` | 站点与主题配置 |
 
@@ -50,10 +49,19 @@ weight: 10
 description: 一句话摘要（SEO / 列表卡片）
 ---
 
-# 页面标题
+## 第一节
 
-正文……
+正文从二级标题（`##`）开始……
 ```
+
+## 标题不要重复（重要）
+
+Hextra 会用 front matter 的 `title` 自动渲染页眉 `<h1>`。  
+因此正文里**不要**再写与 `title` 相同的 `# 一级标题`，否则页面顶部会出现两行相同文字。
+
+| 正确 | 错误 |
+|------|------|
+| `title: 写作规范`，正文从 `## ...` 起 | `title` 与正文 `# 写作规范` 同时存在 |
 
 ## 新增多级目录
 
@@ -73,7 +81,7 @@ content/zh-cn/docs/
 
 | 字段 | 说明 |
 |------|------|
-| `title` | **必填**。页面标题（侧栏与浏览器标题）；缺省时侧栏会难看地回退为文件名 |
+| `title` | **必填**。页面标题（侧栏、浏览器标题、页眉 h1）；缺省时侧栏会回退为文件名 |
 | `weight` | 侧栏排序，越小越靠前 |
 | `description` | 摘要 |
 | `draft` | `true` 时生产构建默认不输出（本地用 `hugo server -D`） |
@@ -92,6 +100,8 @@ content/zh-cn/docs/
 ## 资源与短代码
 
 - 图片放 `static/images/`，正文用 `/images/xxx.png`。
+- PDF / Word 等放 `static/files/...`，正文用 `/files/...` 链接下载；**不要**把二进制文件放进 `content/`。
+- 需要自动清单时用短代码：`{{</* file-list dir="files/blog/tech-books" ext=".pdf" */>}}`（构建时扫描目录）。
 - 流程图优先 Mermaid；步骤、提示用 Hextra 短代码（`cards`、`callout`、`steps`、`tabs` 等）。
 - 样式微调改 `assets/css/custom.css`，不要直接改 `_vendor/`。
 

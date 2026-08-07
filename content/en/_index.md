@@ -3,8 +3,6 @@ title: Forever Funny
 toc: false
 ---
 
-# Forever Funny
-
 Personal docs site built with **Hugo + Hextra**.
 
 {{< cards >}}

@@ -2,8 +2,6 @@
 title: RUM 模块 —— 用户 ID 采集规则：配置、下发与生效范围
 ---
 
-# RUM 模块 —— 用户 ID 采集规则：配置、下发与生效范围
-
 > 本文梳理控制台 **规则配置 → 实体识别 → 终端用户 → 用户 ID 采集** 页签下自定义规则的存储隔离、开关控制、缓存加载与 Web SDK 下发链路。
 > 代码根目录：`D:\Bonree\CodeProject\newone`（`framework/plugins/rum`、`view/rum`、`controller/controller`）。
 

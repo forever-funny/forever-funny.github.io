@@ -2,8 +2,6 @@
 title: RUM ClickHouse 表与页面功能映射
 ---
 
-# RUM ClickHouse 表与页面功能映射
-
 > **文档版本**：基于 `newonexm` 仓库当前代码与 DDL 梳理
 > **基准脚本**：`script/one_framework_rum/INIT/clickhouse/all/one_rum_datasource_gran.sql`、`one_rum_datasource_snapshot.sql`、`one_common_datasource_gran.sql`
 > **视图注册**：`script/one_framework_rum/INIT/mariadb/all/one_rum_queryservice_view.sql`

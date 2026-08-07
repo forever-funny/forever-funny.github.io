@@ -1,16 +1,14 @@
 ---
-title: README
+title: RUM 业务逻辑及内部逻辑 - 归档梳理总索引
 sidebar:
   exclude: true
 llms: false
 ---
 
-# RUM 业务逻辑及内部逻辑 - 归档梳理总索引
-
 > 知识库根目录（Hugo）：`D:\Bonree\AiProject\forever-funny\content\zh-cn\docs\digital-experience\rum`  
 > 站点路径：`/zh-cn/docs/digital-experience/rum/`  
 > 问答与回写均以本目录为准；原 `RUM-ai` 目录仅作历史备份，不再读写。  
-> **写作约定**：每篇 `.md` 必须含 YAML front matter，且 **`title` 必填**（侧栏显示用）。
+> **写作约定**：每篇 `.md` 必须含 YAML front matter 且 **`title` 必填**；正文不要再写与 `title` 重复的 `#` 一级标题（Hextra 会用 `title` 渲染页眉）。
 
 ## 目录结构
 

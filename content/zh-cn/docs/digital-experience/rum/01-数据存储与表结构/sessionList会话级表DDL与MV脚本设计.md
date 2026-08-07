@@ -2,8 +2,6 @@
 title: sessionList 会话级 ClickHouse 表 DDL 与 MV 脚本设计
 ---
 
-# sessionList 会话级 ClickHouse 表 DDL 与 MV 脚本设计
-
 | 项 | 内容 |
 |----|------|
 | 文档版本 | v1.1 |
