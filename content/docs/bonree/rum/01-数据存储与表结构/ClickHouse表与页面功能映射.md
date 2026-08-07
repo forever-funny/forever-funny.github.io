@@ -1,8 +1,3 @@
----
-title: RUM ClickHouse 表与页面功能映射
-weight: 3
----
-
 # RUM ClickHouse 表与页面功能映射
 
 > **文档版本**：基于 `newonexm` 仓库当前代码与 DDL 梳理
