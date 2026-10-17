@@ -1,0 +1,5 @@
+# 本地开发专用配置覆盖：搜索库走国内镜像，避免 jsdelivr 连接被重置。
+# 不会自动生效，必须通过 `hugo ... --config hugo.toml,hugo.local.toml` 显式加载。
+# 生产/CI 不使用本文件，仍走 hugo.toml 默认的 jsdelivr。
+[params.search.flexsearch]
+  base = 'https://registry.npmmirror.com/flexsearch/0.8.143/files/dist'
