@@ -1,0 +1,40 @@
+---
+description: 项目相关问题先检索 content/zh-cn/docs 本地知识库；缺失或过时时确认后再回写
+alwaysApply: true
+---
+
+# 本地知识库优先（forever-funny docs）
+
+当问题与 forever-funny / 博睿 ONE 平台工程、产品、架构、组件、业务逻辑相关时，必须先检索本地知识库再回答；不得跳过知识库只凭记忆下结论。
+
+## 知识库根目录（强制）
+
+`D:\Bonree\AiProject\forever-funny\content\zh-cn\docs`
+
+- 检索范围为上述目录及其全部子目录（含 `digital-experience/rum`、`apm`、`iam`、`platform-core` 等，以及架构/计费/跨仓等顶层文档）。
+- **不再**仅限 RUM；RUM 只是子树之一。
+- 站点入口：`/zh-cn/docs/`；写作约定：`writing-guide.md`；组件路由：`ownership-map.md`、`_index.md`。
+
+## 检索顺序
+
+1. 按关键词定位组件/主题目录。
+2. 优先读该目录 `kb-index.md` 关键词路由（禁止用 `INDEX.md` / `index.md` 作风索引名）。
+3. 未命中则读 README / `_index.md`，或在 `content/zh-cn/docs` 内全文检索后阅读命中文档。
+4. 跨组件问题同时查顶层文档与多个组件库。
+5. 基于已读知识库作答，并尽量引用文档路径。
+
+## 未覆盖 / 过时时必须确认回写
+
+若本地知识库未覆盖、覆盖不足，或与源码/事实对照后明显不是最新：
+
+1. 先基于源码/证据给出完整结论；
+2. 回答末尾询问：「本地知识库未覆盖 / 内容可能不是最新。是否把本次结论更新到本地知识库？（路径建议：`content/zh-cn/docs/...`）」；
+3. **仅在用户确认后**才回写；禁止静默改写。
+
+回写时写入对应主题目录；有 `UPDATE-PROTOCOL.md` 则按其更新并同步 `kb-index.md`。新建 `.md` 必须含 `title`；正文禁止重复 `#` 一级标题（从 `##` 起）。
+
+## 禁止当作知识库读写的旧路径
+
+- `D:\Bonree\No.7-应用能力中心-交付架构\RUM-ai`
+- `content\docs\bonree\rum`、`content\docs\Digital Experience\rum`
+- `content\zh-cn\docs\Digital Experience\rum`、`content\zh-cn\docs\Digital-Experience\rum`

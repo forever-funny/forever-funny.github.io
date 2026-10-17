@@ -7,6 +7,5 @@ weight: 1
 
 {{< cards >}}
   {{< card link="getting-started" title="入门指南" icon="academic-cap" >}}
-  {{< card link="writing-guide" title="写作规范" icon="pencil" >}}
-  {{< card link="digital-experience" title="Digital Experience" icon="collection" >}}
+  {{< card link="doc" title="文档中心" icon="newspaper" >}}
 {{< /cards >}}
