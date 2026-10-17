@@ -1,12 +1,32 @@
 ---
 title: Forever Funny
-toc: false
+layout: hextra-home
 ---
 
-Personal docs site built with **Hugo + Hextra**.
+{{< hextra/hero-badge >}}
+  Personal site · notes and projects
+{{< /hextra/hero-badge >}}
 
-{{< cards >}}
-  {{< card link="docs" title="Docs" icon="book-open" subtitle="Browse documentation" >}}
-  {{< card link="docs/getting-started" title="Getting started" icon="academic-cap" subtitle="Local preview and writing conventions" >}}
-  {{< card link="blog" title="Blog" icon="newspaper" subtitle="Changelog and announcements (placeholder)" >}}
-{{< /cards >}}
+<div class="hx:mt-6 hx:mb-6">
+{{< hextra/hero-headline >}}
+  Hello, this is Forever Funny
+{{< /hextra/hero-headline >}}
+</div>
+
+<div class="hx:mb-8">
+{{< hextra/hero-subtitle >}}
+  A place for technical notes from work, things in progress, and the books and sites worth keeping.
+{{< /hextra/hero-subtitle >}}
+</div>
+
+<div class="hx:mb-14 hx:flex hx:flex-wrap hx:gap-3">
+  {{< hextra/hero-button text="Browse docs" link="docs" >}}
+  {{< hextra/hero-button text="See projects" link="projects" >}}
+</div>
+
+{{< hextra/feature-grid >}}
+  {{< hextra/feature-card title="About" subtitle="What this site is for" link="about" icon="user" >}}
+  {{< hextra/feature-card title="Projects" subtitle="Things built and in progress" link="projects" icon="cube" >}}
+  {{< hextra/feature-card title="Docs" subtitle="Notes organized by topic" link="docs" icon="library" >}}
+  {{< hextra/feature-card title="Notes" subtitle="Books, sites, and other records" link="blog" icon="newspaper" >}}
+{{< /hextra/feature-grid >}}

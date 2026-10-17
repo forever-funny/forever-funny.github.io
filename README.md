@@ -1,6 +1,6 @@
 # Forever Funny
 
-基于 **Hugo + [Hextra](https://github.com/imfing/hextra)** 的个人文档站。
+基于 **Hugo + [Hextra](https://github.com/imfing/hextra)** 的个人网站。首页是落地页；知识库在 `docs/`，随笔在 `blog/`。
 
 - 本地工程目录：`forever-funny`
 - 远程仓库名：`forever-funny.github.io`（GitHub User Site）
@@ -29,25 +29,28 @@ hugo mod vendor
 
 ## 本地预览
 
+内容变更后，用下面的命令启动才能在本地看到最新结果。默认的快速渲染可能只重做当前页，改过的其他页面仍是旧的。
+
 ```powershell
 cd forever-funny
-hugo server -D
+hugo server -D --disableFastRender
 ```
 
-浏览器打开终端提示的地址（默认 `http://localhost:1313/` → 通常跳到 `/zh-cn/`）。
+浏览器打开终端提示的地址（默认 `http://localhost:1313/` → 通常跳到 `/zh-cn/`）。改完后在浏览器里强制刷新一次（Ctrl+F5）。若已有旧的 `hugo server` 在跑，先停掉再执行上述命令。
 
-本地构建：
+清理并重建本地编译产物。`--cleanDestinationDir` 会先清空 `public/`，再按当前内容整站生成：
 
 ```powershell
-hugo --minify
+hugo --minify --cleanDestinationDir
 ```
 
-产物在 `public/`（已加入 `.gitignore`，不要提交）。
+产物在 `public/`（已加入 `.gitignore`，不要提交）。`hugo server` 默认在内存里预览，不会自动更新这份目录。
 
 ## 文档怎么写
 
 - 中文：`content/zh-cn/`；英文：`content/en/`（URL 带语言前缀）
-- 正式文档：`docs/`；变更日志：`blog/`
+- 首页、关于、项目：`_index.md`、`about.md`、`projects.md`
+- 知识库：`docs/`；随笔：`blog/`
 - 目录名用 kebab-case；详见各语言「写作规范」
 
 ## 已预留能力
@@ -55,7 +58,7 @@ hugo --minify
 | 能力 | 位置 / 开关 |
 |------|-------------|
 | 多语言 | `content/zh-cn`、`content/en` |
-| Logo | `static/images/` + `params.navbar.logo`（`displayLogo` 暂为 false） |
+| Logo | `static/images/logo.svg`、`logo-dark.svg`（顶栏已开启） |
 | 自定义样式 | `assets/css/custom.css` |
 | Edit on GitHub | `params.editURL` |
 | llms.txt / Markdown | `[outputs]` + 页面「复制 Markdown」菜单 |
@@ -87,7 +90,7 @@ forever-funny/
 ├── archetypes/default.md
 ├── assets/css/custom.css
 ├── content/
-│   ├── zh-cn/          # docs + blog
+│   ├── zh-cn/          # 首页、关于、项目、docs、blog
 │   └── en/
 ├── static/images/
 ├── static/files/

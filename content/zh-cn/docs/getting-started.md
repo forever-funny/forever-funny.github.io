@@ -23,7 +23,7 @@ hugo server -D
 ## 新增文档
 
 1. 中文文档写在 `content/zh-cn/docs/`，英文写在 `content/en/docs/`
-2. 多级目录：每一级放一个 `_index.md` 作为菜单节点（示例：`content/zh-cn/docs/Digital Experience/rum/`）
+2. 多级目录：每一级放一个 `_index.md` 作为菜单节点（示例：`content/zh-cn/docs/aaa/`）
 3. 写好 front matter（至少包含 `title`，可用 `weight` 控制排序）
 4. 保存后本地预览会自动刷新
 

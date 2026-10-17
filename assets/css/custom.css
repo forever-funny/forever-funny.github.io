@@ -1,10 +1,9 @@
 /* Site overrides for Hextra (auto-loaded).
    Docs: https://imfing.github.io/hextra/docs/guide/configuration/ */
 
-/* Brand color knobs (uncomment to tune)
-:root {
-  --primary-hue: 212deg;
-  --primary-saturation: 100%;
-  --primary-lightness: 50%;
+:root,
+.dark {
+  --primary-hue: 24deg;
+  --primary-saturation: 88%;
+  --primary-lightness: 46%;
 }
-*/

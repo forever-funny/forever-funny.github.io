@@ -1,5 +1,5 @@
 ---
-title: 文档
+title: 知识库
 weight: 1
 ---
 

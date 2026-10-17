@@ -40,81 +40,105 @@ enableRobotsTXT = true
 
 [languages.zh-cn.menu]
   [[languages.zh-cn.menu.main]]
-    name = '文档'
-    pageRef = '/docs'
+    name = '首页'
+    pageRef = '/'
     weight = 1
   [[languages.zh-cn.menu.main]]
-    name = '博客'
-    pageRef = '/blog'
+    name = '关于'
+    pageRef = '/about'
     weight = 2
   [[languages.zh-cn.menu.main]]
-    name = 'Search'
+    name = '项目'
+    pageRef = '/projects'
     weight = 3
+  [[languages.zh-cn.menu.main]]
+    name = '知识库'
+    pageRef = '/docs'
+    weight = 4
+  [[languages.zh-cn.menu.main]]
+    name = '随笔'
+    pageRef = '/blog'
+    weight = 5
+  [[languages.zh-cn.menu.main]]
+    name = 'Search'
+    weight = 6
     [languages.zh-cn.menu.main.params]
       type = 'search'
   [[languages.zh-cn.menu.main]]
     name = 'GitHub'
     url = 'https://github.com/forever-funny/forever-funny.github.io'
-    weight = 4
+    weight = 7
     [languages.zh-cn.menu.main.params]
       icon = 'github'
   [[languages.zh-cn.menu.main]]
     name = 'Theme'
-    weight = 5
+    weight = 8
     [languages.zh-cn.menu.main.params]
       type = 'theme-toggle'
   [[languages.zh-cn.menu.main]]
     name = 'Language'
-    weight = 6
+    weight = 9
     [languages.zh-cn.menu.main.params]
       type = 'language-switch'
 
 [languages.en.menu]
   [[languages.en.menu.main]]
-    name = 'Docs'
-    pageRef = '/docs'
+    name = 'Home'
+    pageRef = '/'
     weight = 1
   [[languages.en.menu.main]]
-    name = 'Blog'
-    pageRef = '/blog'
+    name = 'About'
+    pageRef = '/about'
     weight = 2
   [[languages.en.menu.main]]
-    name = 'Search'
+    name = 'Projects'
+    pageRef = '/projects'
     weight = 3
+  [[languages.en.menu.main]]
+    name = 'Docs'
+    pageRef = '/docs'
+    weight = 4
+  [[languages.en.menu.main]]
+    name = 'Notes'
+    pageRef = '/blog'
+    weight = 5
+  [[languages.en.menu.main]]
+    name = 'Search'
+    weight = 6
     [languages.en.menu.main.params]
       type = 'search'
   [[languages.en.menu.main]]
     name = 'GitHub'
     url = 'https://github.com/forever-funny/forever-funny.github.io'
-    weight = 4
+    weight = 7
     [languages.en.menu.main.params]
       icon = 'github'
   [[languages.en.menu.main]]
     name = 'Theme'
-    weight = 5
+    weight = 8
     [languages.en.menu.main.params]
       type = 'theme-toggle'
   [[languages.en.menu.main]]
     name = 'Language'
-    weight = 6
+    weight = 9
     [languages.en.menu.main.params]
       type = 'language-switch'
 
 [params]
   [params.navbar]
     displayTitle = true
-    # 放入 static/images/logo.svg 后改为 true
-    displayLogo = false
+    displayLogo = true
+    width = 'wide'
     [params.navbar.logo]
       path = 'images/logo.svg'
       dark = 'images/logo-dark.svg'
-      width = 40
-      height = 20
+      width = 28
+      height = 28
   [params.theme]
     default = 'system'
     displayToggle = true
   [params.footer]
-    displayCopyright = false
+    displayCopyright = true
     displayPoweredBy = false
   [params.editURL]
     enable = true

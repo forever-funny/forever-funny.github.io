@@ -1,15 +1,32 @@
 ---
 title: Forever Funny
-toc: false
+layout: hextra-home
 ---
 
-个人文档知识库，记录职业生涯的点点滴滴，基于 **Hugo + Hextra + Github pages**搭建。
+{{< hextra/hero-badge >}}
+  个人站点 · 知识库与项目
+{{< /hextra/hero-badge >}}
 
-{{< cards >}}
+<div class="hx:mt-6 hx:mb-6">
+{{< hextra/hero-headline >}}
+  你好，这里是 Forever Funny
+{{< /hextra/hero-headline >}}
+</div>
 
-  {{< card link="docs/getting-started" title="入门指南" icon="academic-cap" subtitle="本地预览与写作约定" >}}
+<div class="hx:mb-8">
+{{< hextra/hero-subtitle >}}
+  把工作里的技术判断整理成知识库，也放上正在做的东西和随手记下的书、站点。
+{{< /hextra/hero-subtitle >}}
+</div>
 
-  {{< card link="docs" title="文档" icon="book-open" subtitle="浏览全部文档知识库" >}}
+<div class="hx:mb-14 hx:flex hx:flex-wrap hx:gap-3">
+  {{< hextra/hero-button text="看知识库" link="docs" >}}
+  {{< hextra/hero-button text="看项目" link="projects" >}}
+</div>
 
-  {{< card link="blog" title="博客" icon="newspaper" subtitle="记录分享好用、好看、好玩的东西" >}}
-{{< /cards >}}
+{{< hextra/feature-grid >}}
+  {{< hextra/feature-card title="关于" subtitle="这个站点在记什么" link="about" icon="user" >}}
+  {{< hextra/feature-card title="项目" subtitle="做过和正在做的事" link="projects" icon="cube" >}}
+  {{< hextra/feature-card title="知识库" subtitle="按主题整理的文档" link="docs" icon="library" >}}
+  {{< hextra/feature-card title="随笔" subtitle="书单、站点和其它记录" link="blog" icon="newspaper" >}}
+{{< /hextra/feature-grid >}}
