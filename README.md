@@ -49,7 +49,6 @@ hugo --minify
 - 中文：`content/zh-cn/`；英文：`content/en/`（URL 带语言前缀）
 - 正式文档：`docs/`；变更日志：`blog/`
 - 目录名用 kebab-case；详见各语言「写作规范」
-- RUM 知识库：`content/zh-cn/docs/digital-experience/rum/`（每篇文档须含 front matter `title`）
 
 ## 已预留能力
 
@@ -76,11 +75,6 @@ hugo --minify
 ```bash
 ./git-retry.sh push          # 默认: git push -u origin HEAD
 ./git-retry.sh pull          # 默认: git pull
-```
-
-```bat
-git-retry.bat push
-git-retry.bat pull
 ```
 
 环境变量：`GIT_RETRY_INTERVAL`（秒，默认 1）、`GIT_REMOTE`（push 无参时默认 `origin`）。
