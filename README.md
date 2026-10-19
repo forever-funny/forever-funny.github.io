@@ -1,10 +1,11 @@
 # Forever Funny
 
-基于 **Hugo + [Hextra](https://github.com/imfing/hextra)** 的个人网站。首页是落地页；知识库在 `docs/`，随笔在 `blog/`。
+基于 **Hugo + [Hextra](https://github.com/imfing/hextra)** 的双语个人网站。首页是落地页，笔记在 `docs/`，随笔在 `blog/`。
 
 - 本地工程目录：`forever-funny`
 - 远程仓库名：`forever-funny.github.io`（GitHub User Site）
-- 预期线上地址：https://forever-funny.github.io/
+- 线上地址：https://forever-funny.github.io/
+- 中文在根路径 `/`，英文在 `/en/`；旧的 `/zh-cn/**` 链接通过 `aliases` 跳转
 
 ## 环境准备
 
@@ -12,15 +13,10 @@
 
 ```powershell
 winget install Hugo.Hugo.Extended
+hugo version   # 输出中应包含 extended
 ```
 
-验证：
-
-```powershell
-hugo version
-```
-
-输出中应包含 `extended`。主题通过 Hugo Module 引入，并已 `hugo mod vendor` 到 `_vendor/`；日常预览一般无需再拉依赖。若要更新主题：
+主题通过 Hugo Module 引入，并已 `hugo mod vendor` 到 `_vendor/`，日常预览无需再拉依赖。更新主题：
 
 ```powershell
 hugo mod get -u github.com/imfing/hextra
@@ -29,49 +25,66 @@ hugo mod vendor
 
 ## 本地预览
 
-内容变更后，用下面的命令启动才能在本地看到最新结果。默认的快速渲染可能只重做当前页，改过的其他页面仍是旧的。
-
 ```powershell
-cd forever-funny
 hugo server -D --disableFastRender
 ```
 
-浏览器打开终端提示的地址（默认 `http://localhost:1313/` → 通常跳到 `/zh-cn/`）。改完后在浏览器里强制刷新一次（Ctrl+F5）。若已有旧的 `hugo server` 在跑，先停掉再执行上述命令。
+打开 `http://localhost:1313/`。请使用 `localhost`（而不是 `127.0.0.1`），否则「复制页面」拉取 `.md` 时会被 CORS 拦住。改完强制刷新一次（Ctrl+F5）。
 
-清理并重建本地编译产物。`--cleanDestinationDir` 会先清空 `public/`，再按当前内容整站生成：
+构建产物并清理旧文件：
 
 ```powershell
 hugo --minify --cleanDestinationDir
+node scripts/check-links.mjs public
 ```
 
-产物在 `public/`（已加入 `.gitignore`，不要提交）。`hugo server` 默认在内存里预览，不会自动更新这份目录。
+`public/` 已加入 `.gitignore`，不要提交。`hugo server` 默认在内存里预览，不会更新这份目录。
 
-## 文档怎么写
+## 内容布局与 URL
 
-- 中文：`content/zh-cn/`；英文：`content/en/`（URL 带语言前缀）
-- 首页、关于、项目：`_index.md`、`about.md`、`projects.md`
-- 知识库：`docs/`；随笔：`blog/`
-- 目录名用 kebab-case；详见各语言「写作规范」
+| 中文 URL | 英文 URL | 内容 |
+|----------|----------|------|
+| `/` | `/en/` | 首页（hero + 四张入口卡片） |
+| `/about/` | `/en/about/` | 关于 |
+| `/projects/` | `/en/projects/` | 项目 |
+| `/docs/` | `/en/docs/` | 笔记（带左侧目录） |
+| `/blog/` | `/en/blog/` | 随笔：常用网站 / 技术书籍 / 其它 |
 
-## 已预留能力
+- 中文：`content/zh-cn/`；英文：`content/en/`。
+- 笔记是 `docs/`，随笔是 `blog/`，两边的相对路径尽量保持一致，语言切换才能落到对应页。
+- 写作约定见 <https://forever-funny.github.io/docs/writing-guide/>。
 
-| 能力 | 位置 / 开关 |
-|------|-------------|
-| 多语言 | `content/zh-cn`、`content/en` |
-| Logo | `static/images/logo.svg`、`logo-dark.svg`（顶栏已开启） |
-| 自定义样式 | `assets/css/custom.css` |
-| Edit on GitHub | `params.editURL` |
-| llms.txt / Markdown | `[outputs]` + 页面「复制 Markdown」菜单 |
-| 公告条 | `params.banner`（默认注释） |
-| 博客 section | `content/*/blog/` |
+## 新增内容
+
+```powershell
+hugo new content/zh-cn/docs/example-topic/overview.md
+```
+
+front matter 至少写 `title`，可用 `weight` 控制侧栏顺序。每级目录放一个 `_index.md` 作为菜单节点。
+
+> 正文里可用的 `hx:` 工具类只包括主题已编译的那些。需要新样式时写进 `assets/css/custom.css` 的语义类（例如 `site-hero-actions`），不要依赖未编译的 Tailwind 类。
+
+## 品牌资源
+
+FF 字标、favicon、PWA 图标和 1200×630 分享图由同一套几何坐标生成：
+
+```powershell
+python scripts/gen-brand-assets.py
+```
+
+需要 Pillow。输出覆盖 `static/images/logo*.svg`、`static/images/og.png`、根目录 favicon 系列与 `static/site.webmanifest`。
+
+## 附件与体积
+
+站点不再托管 PDF / Word 等大文件，`static/files/` 已移除；技术书籍页只保留书目。历史 PDF 仍存在于 git 历史中，clone 体积不会因此变小；如需彻底瘦身需单独重写历史。
 
 ## 发布到 GitHub Pages
 
-仓库已预置 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)。
+仓库已预置 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)：
 
 1. 推送到 `main`
 2. Settings → Pages → Source 选 **GitHub Actions**
-3. 站点发布在 https://forever-funny.github.io/
+3. 构建阶段会执行 `hugo --printPathWarnings` 和 `node scripts/check-links.mjs ./public`，有内链 404 会直接失败
 
 网络不稳时可用重试脚本（以脚本所在目录为仓库根，失败按间隔重试直至成功）：
 
@@ -88,14 +101,19 @@ hugo --minify --cleanDestinationDir
 forever-funny/
 ├── .github/workflows/pages.yml
 ├── archetypes/default.md
-├── assets/css/custom.css
+├── assets/css/custom.css        # 主色、阅读宽度、标题对齐、hero 间距
 ├── content/
-│   ├── zh-cn/          # 首页、关于、项目、docs、blog
+│   ├── zh-cn/                  # 首页、关于、项目、docs、blog
 │   └── en/
-├── static/images/
-├── static/files/
-├── _vendor/            # Hextra module 缓存
-├── git-retry.sh / git-retry.bat
+├── layouts/
+│   ├── 404.html                # 双语 404，带站点导航
+│   └── robots.txt              # 含 Sitemap
+├── scripts/
+│   ├── check-links.mjs         # 构建产物内链检查（CI 也用）
+│   └── gen-brand-assets.py     # 生成 FF 图标与分享图
+├── static/images/              # logo、og 分享图、插图
+├── _vendor/                    # Hextra module 缓存
+├── git-retry.sh
 ├── hugo.toml
 ├── go.mod / go.sum
 └── README.md

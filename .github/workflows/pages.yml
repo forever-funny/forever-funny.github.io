@@ -49,7 +49,11 @@ jobs:
           hugo \
             --gc \
             --minify \
+            --printPathWarnings \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Check internal links
+        run: node scripts/check-links.mjs ./public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
