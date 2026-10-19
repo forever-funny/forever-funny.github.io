@@ -1,9 +1,65 @@
-/* Site overrides for Hextra (auto-loaded).
+/* Site overrides for Hextra (loaded after the theme styles).
    Docs: https://imfing.github.io/hextra/docs/guide/configuration/ */
 
-:root,
+/* ---------------------------------------------------------------------------
+   Brand palette
+   Light mode is darkened so body links and primary buttons reach >= 4.5:1 on
+   white; dark mode is brightened so the same links stay readable on near-black.
+   --------------------------------------------------------------------------- */
+:root {
+  --primary-hue: 24deg;
+  --primary-saturation: 88%;
+  --primary-lightness: 42%;
+}
+
 .dark {
   --primary-hue: 24deg;
   --primary-saturation: 88%;
-  --primary-lightness: 46%;
+  --primary-lightness: 60%;
+}
+
+/* White label on primary-600 needs a deeper fill in dark mode. */
+.dark a[class*="bg-primary-600"] {
+  background-color: hsl(var(--primary-hue) var(--primary-saturation) 36%);
+}
+
+.dark a[class*="bg-primary-600"]:hover {
+  background-color: hsl(var(--primary-hue) var(--primary-saturation) 32%);
+}
+
+/* The theme hard-codes hsl(..., 50%) on the blog "read more" link, which is
+   brighter than the rest of the palette and fails contrast. Point it at the
+   same shade the theme derives for primary-600 (lightness * 0.9). */
+main [class*="text-[color:hsl("] {
+  color: hsl(var(--primary-hue) var(--primary-saturation) calc(var(--primary-lightness) * 0.9));
+}
+
+/* ---------------------------------------------------------------------------
+   Layout
+   --------------------------------------------------------------------------- */
+
+/* Standalone pages are centred by the theme while their body is left aligned.
+   Left-align the title so the two match (docs pages keep their own title). */
+main#content > h1 {
+  text-align: left;
+}
+
+/* One reading width for prose. The home layout has no .content wrapper, so the
+   hero keeps the full page width. */
+main#content > .content {
+  max-width: 46rem;
+}
+
+/* Hero action row: replaces utility classes that the theme's prebuilt CSS does
+   not contain (hx:mb-14 / hx:gap-3). */
+.site-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Keep CJK-heavy headings from rendering excessively heavy. */
+main#content h2 {
+  font-weight: 600;
 }

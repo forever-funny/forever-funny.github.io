@@ -21,12 +21,12 @@ aliases:
 {{< /hextra/hero-subtitle >}}
 </div>
 
-<div class="hx:mb-14 hx:flex hx:flex-wrap hx:gap-3">
+<div class="site-hero-actions">
   {{< hextra/hero-button text="看知识库" link="docs" >}}
   {{< hextra/hero-button text="看项目" link="projects" >}}
 </div>
 
-{{< hextra/feature-grid >}}
+{{< hextra/feature-grid cols="4" >}}
   {{< hextra/feature-card title="关于" subtitle="这个站点在记什么" link="about" icon="user" >}}
   {{< hextra/feature-card title="项目" subtitle="做过和正在做的事" link="projects" icon="cube" >}}
   {{< hextra/feature-card title="知识库" subtitle="按主题整理的文档" link="docs" icon="library" >}}
