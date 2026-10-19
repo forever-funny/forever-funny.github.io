@@ -1,6 +1,8 @@
 ---
 title: 技术书籍
 weight: 2
+aliases:
+  - /zh-cn/blog/tech-books/
 description: 技术书籍 PDF 文件清单
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: Forever Funny
 layout: hextra-home
+aliases:
+  - /zh-cn/
 ---
 
 {{< hextra/hero-badge >}}

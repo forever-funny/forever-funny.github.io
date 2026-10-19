@@ -1,5 +1,7 @@
 ---
 title: 随笔
+aliases:
+  - /zh-cn/blog/
 cascade:
   type: blog
 ---

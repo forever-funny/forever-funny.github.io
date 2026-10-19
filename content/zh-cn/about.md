@@ -1,5 +1,7 @@
 ---
 title: 关于
+aliases:
+  - /zh-cn/about/
 sidebar:
   hide: true
 toc: false

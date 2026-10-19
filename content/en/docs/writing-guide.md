@@ -20,7 +20,7 @@ description: Directory layout, URL rules, front matter, and i18n conventions
 
 - Use kebab-case folder names (`a-z`, `0-9`, `-`) only — no spaces, no non-ASCII path segments.
 - Put the display name in `title`.
-- Link with the **slug** (e.g. `digital-experience`), not the raw folder label.
+- Link with the **slug** (e.g. `notes`), not the raw folder label.
 - When renaming, add `aliases` so old URLs keep working.
 
 ## New page

@@ -1,6 +1,8 @@
 ---
 title: 入门指南
 weight: 1
+aliases:
+  - /zh-cn/docs/getting-started/
 description: 环境要求、本地预览与新增文档
 ---
 
@@ -27,4 +29,4 @@ hugo server -D
 3. 写好 front matter（至少包含 `title`，可用 `weight` 控制排序）
 4. 保存后本地预览会自动刷新
 
-默认语言为中文（`/zh-cn/`），顶栏可切换 English（`/en/`）。详见「写作规范」。
+默认语言为中文（`/`），顶栏可切换 English（`/en/`）。详见「写作规范」。

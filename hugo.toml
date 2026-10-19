@@ -1,7 +1,7 @@
 baseURL = 'https://forever-funny.github.io/'
 title = 'Forever Funny'
 defaultContentLanguage = 'zh-cn'
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false
 enableGitInfo = true
 enableRobotsTXT = true
 
@@ -11,9 +11,9 @@ enableRobotsTXT = true
 
 # AI / Markdown 可读输出（Hextra 已定义 outputFormats.llms / markdown）
 [outputs]
-  home = ['html', 'llms']
+  home = ['html', 'llms', 'rss']
   page = ['html', 'markdown']
-  section = ['html', 'markdown']
+  section = ['html', 'markdown', 'rss']
 
 [languages.zh-cn]
   label = '中文'
@@ -22,12 +22,18 @@ enableRobotsTXT = true
   title = 'Forever Funny'
   contentDir = 'content/zh-cn'
 
+[languages.zh-cn.params]
+  description = 'Forever Funny：技术笔记、项目与随笔。'
+
 [languages.en]
   label = 'English'
   locale = 'en'
   weight = 2
   title = 'Forever Funny'
   contentDir = 'content/en'
+
+[languages.en.params]
+  description = 'Forever Funny: tech notes, projects, and essays.'
 
 [markup]
   [markup.goldmark.renderer]
@@ -52,7 +58,7 @@ enableRobotsTXT = true
     pageRef = '/projects'
     weight = 3
   [[languages.zh-cn.menu.main]]
-    name = '知识库'
+    name = '笔记'
     pageRef = '/docs'
     weight = 4
   [[languages.zh-cn.menu.main]]
@@ -95,7 +101,7 @@ enableRobotsTXT = true
     pageRef = '/projects'
     weight = 3
   [[languages.en.menu.main]]
-    name = 'Docs'
+    name = 'Tech notes'
     pageRef = '/docs'
     weight = 4
   [[languages.en.menu.main]]
@@ -125,10 +131,12 @@ enableRobotsTXT = true
       type = 'language-switch'
 
 [params]
+  images = ['images/og.png']
+  displayUpdatedDate = true
   [params.navbar]
     displayTitle = true
     displayLogo = true
-    width = 'wide'
+    width = 'normal'
     [params.navbar.logo]
       path = 'images/logo.svg'
       dark = 'images/logo-dark.svg'
@@ -148,14 +156,14 @@ enableRobotsTXT = true
   # 公告条：需要时取消注释
   # [params.banner]
   #   key = 'announcement-1'
-  #   message = '站点公告，支持 [Markdown](/zh-cn/docs/) 链接。'
+  #   message = '站点公告，支持 [Markdown](/docs/) 链接。'
   [params.page]
     displayPagination = true
     [params.page.contextMenu]
       enable = true
   [params.blog]
     [params.blog.list]
-      displayTags = true
+      displayTags = false
       pagerSize = 10
 
 [taxonomies]
