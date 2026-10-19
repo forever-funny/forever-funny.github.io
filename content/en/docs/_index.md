@@ -1,13 +1,12 @@
 ---
-title: Docs
+title: Tech notes
 weight: 1
+description: Site conventions and public notes, organized by topic
 ---
 
-Write and organize documentation under this section. The sidebar is generated from pages in `content/en/docs/`.
+This section holds two kinds of pages: the conventions used to write this site, and public notes organized by topic. The sidebar is generated from `content/en/docs/`.
 
 {{< cards >}}
-  {{< card link="getting-started" title="Getting started" icon="academic-cap" >}}
-  {{< card link="writing-guide" title="Writing guide" icon="pencil" >}}
+  {{< card link="getting-started" title="Getting started" icon="academic-cap" subtitle="Requirements and local preview" >}}
+  {{< card link="writing-guide" title="Writing guide" icon="pencil" subtitle="Layouts, URLs, and front matter" >}}
 {{< /cards >}}
-
-> The RUM knowledge base currently lives under the Chinese locale (`/zh-cn/docs/digital-experience/rum/`). Switch language from the navbar to browse it.

@@ -1,17 +1,18 @@
 ---
 title: About
+description: What this site keeps, and what is in progress
 sidebar:
   hide: true
 toc: false
 ---
 
-This site keeps things worth opening again. It is organized as a site, with docs and notes as sections.
+This site keeps things worth opening again. It is organized as a site, with notes and essays as sections.
 
 ## What is here
 
-- **Docs**: notes grouped by topic, with a sidebar you can follow.
-- **Projects**: things built and in progress. The site itself and the knowledge base are listed first.
-- **Notes**: books, useful sites, and records that do not belong in the docs yet.
+- **Tech notes**: notes grouped by topic, with a sidebar you can follow.
+- **Projects**: things built and in progress. The site itself and the notes are listed first.
+- **Notes**: books, useful sites, and records that do not belong in the tech notes yet.
 
 ## What is in progress
 
