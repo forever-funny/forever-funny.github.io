@@ -1,8 +1,6 @@
 ---
 title: Forever Funny
 layout: hextra-home
-aliases:
-  - /zh-cn/
 description: 技术笔记、项目与随笔的入口。
 ---
 
