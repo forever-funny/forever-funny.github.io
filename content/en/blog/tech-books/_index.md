@@ -1,7 +1,9 @@
 ---
 title: Tech books
 weight: 2
-description: Reading notes and lists
+description: Reading list of technical books and papers (titles only)
 ---
 
-Tech book notes and reading lists. Add posts in this directory to show them in the list below.
+The reading list is maintained in Chinese, since the titles are Chinese editions:
+
+[技术书籍](/blog/tech-books/)
