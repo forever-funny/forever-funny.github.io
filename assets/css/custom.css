@@ -1,65 +1,338 @@
-/* Site overrides for Hextra (loaded after the theme styles).
+/* Site overrides for Hextra — 方案A v2：蓝色渐变整体风格.
+   渐变色板集中定义在下方 --grad-* 变量里，改色只改这里。
    Docs: https://imfing.github.io/hextra/docs/guide/configuration/ */
 
-/* ---------------------------------------------------------------------------
-   Brand palette — blue (unified base style since 2026-11).
-   Light mode is darkened so body links and primary buttons reach >= 4.5:1 on
-   white; dark mode is brightened so the same links stay readable on near-black.
-   --------------------------------------------------------------------------- */
+/* SECTION: brand gradient tokens */
 :root {
   --primary-hue: 221deg;
   --primary-saturation: 83%;
   --primary-lightness: 42%;
+
+  --ff-blue: #1d4ed8;
+  --ff-blue-bright: #2563eb;
+  --ff-blue-sky: #3b82f6;
+  --ff-blue-deep: #0f2b6b;
+  --ff-ink: #22314a;
+
+  --grad-brand: linear-gradient(135deg, var(--ff-blue-sky), var(--ff-blue) 55%, var(--ff-blue-deep));
+  --grad-accent: linear-gradient(180deg, var(--ff-blue-bright), var(--ff-blue-deep));
+  --grad-hero: linear-gradient(120deg, var(--ff-blue-bright) 0%, var(--ff-blue) 38%, var(--ff-blue-sky) 62%, var(--ff-blue-deep) 100%);
+  --grad-head: linear-gradient(90deg, #eaf1fe, #dbe7fb);
+  --grad-footer: linear-gradient(150deg, var(--ff-blue) 0%, var(--ff-blue-deep) 70%, #081b45 100%);
 }
 
 .dark {
   --primary-hue: 221deg;
   --primary-saturation: 83%;
   --primary-lightness: 60%;
+
+  --ff-blue: #3b82f6;
+  --ff-blue-bright: #60a5fa;
+  --ff-blue-sky: #2563eb;
+  --ff-blue-deep: #1e3a8a;
+
+  --grad-brand: linear-gradient(135deg, var(--ff-blue-bright), var(--ff-blue) 55%, var(--ff-blue-deep));
+  --grad-accent: linear-gradient(180deg, var(--ff-blue-bright), var(--ff-blue));
+  --grad-hero: linear-gradient(120deg, #1e40af 0%, #0f2b6b 40%, #1d4ed8 62%, #081b45 100%);
+  --grad-head: linear-gradient(90deg, #16294a, #12233f);
+  --grad-footer: linear-gradient(150deg, #12233f 0%, #0a1a3d 70%, #060f26 100%);
 }
 
 /* White label on primary-600 needs a deeper fill in dark mode. */
 .dark a[class*="bg-primary-600"] {
   background-color: hsl(var(--primary-hue) var(--primary-saturation) 36%);
 }
-
 .dark a[class*="bg-primary-600"]:hover {
   background-color: hsl(var(--primary-hue) var(--primary-saturation) 32%);
 }
 
-/* The theme hard-codes hsl(..., 50%) on the blog "read more" link, which is
-   brighter than the rest of the palette and fails contrast. Point it at the
-   same shade the theme derives for primary-600 (lightness * 0.9). */
+/* The theme hard-codes hsl(..., 50%) on the blog "read more" link. */
 main [class*="text-[color:hsl("] {
   color: hsl(var(--primary-hue) var(--primary-saturation) calc(var(--primary-lightness) * 0.9));
 }
 
-/* ---------------------------------------------------------------------------
-   Layout
-   --------------------------------------------------------------------------- */
-
-/* Standalone pages are centred by the theme while their body is left aligned.
-   Left-align the title so the two match (docs pages keep their own title). */
-main#content > h1 {
-  text-align: left;
+/* SECTION: global canvas（页面底色竖向浅蓝渐变） */
+body {
+  background: linear-gradient(180deg, #f4f7fd 0%, #e8effc 55%, #eef3fb 100%);
+  background-attachment: fixed;
+}
+.dark body {
+  background: linear-gradient(180deg, #0b1526 0%, #0d1728 55%, #0b1526 100%);
+  background-attachment: fixed;
 }
 
-/* One reading width for prose. The home layout has no .content wrapper, so the
-   hero keeps the full page width. */
-main#content > .content {
-  max-width: 46rem;
+/* SECTION: navbar（渐变发丝线 + 菜单项渐变下划线） */
+.hextra-nav-container-blur {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .02), 0 1px 0 rgba(0, 0, 0, .06),
+    inset 0 -1px 0 transparent;
+}
+.hextra-nav-container::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--ff-blue-bright) 30%, var(--ff-blue-deep) 70%, transparent);
+  opacity: .45; pointer-events: none;
+}
+.hextra-nav-container nav a[class*="hx:text-sm"],
+.hextra-nav-container nav button.hextra-nav-menu-toggle {
+  position: relative;
+}
+.hextra-nav-container nav a[class*="hx:text-sm"]::after,
+.hextra-nav-container nav button.hextra-nav-menu-toggle::after {
+  content: ""; position: absolute; left: .5rem; right: .5rem; bottom: .15rem; height: 2px;
+  background: var(--grad-accent); border-radius: 2px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .25s ease;
+}
+.hextra-nav-container nav a[class*="hx:text-sm"]:hover::after,
+.hextra-nav-container nav a[class*="hx:text-sm"].hx\:font-medium::after,
+.hextra-nav-container nav button.hextra-nav-menu-toggle:hover::after,
+.hextra-nav-container nav button.hextra-nav-menu-toggle.hx\:font-medium::after {
+  transform: scaleX(1);
 }
 
-/* Hero action row: replaces utility classes that the theme's prebuilt CSS does
-   not contain (hx:mb-14 / hx:gap-3). */
-.site-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 3.5rem;
+/* SECTION: hero（首页蓝渐变幕布，由 .site-hero 包裹层启用，全宽出血） */
+body:has(.site-hero) { overflow-x: clip; }
+.site-hero {
+  position: relative;
+  align-self: stretch;
+  width: auto;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: calc(-1 * clamp(2rem, 3vw, 3rem));
+  padding: clamp(3rem, 7vw, 5.2rem) clamp(1.5rem, 6vw, 4rem) clamp(7rem, 14vw, 9rem);
+  background: var(--grad-hero);
+  background-size: 220% 220%;
+  animation: ffHeroFlow 14s ease-in-out infinite;
+  overflow: hidden;
+  text-align: center;
+}
+.site-hero > div[class*="hx:mt-"],
+.site-hero > div[class*="hx:mb-"],
+.site-hero > .site-hero-actions {
+  display: block;
+}
+.site-hero > *:not(style) { position: relative; z-index: 1; }
+.site-hero::before, .site-hero::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+}
+.site-hero::before {
+  width: 480px; height: 480px; right: -120px; top: -180px;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, .16), rgba(255, 255, 255, 0) 70%);
+}
+.site-hero::after {
+  width: 320px; height: 320px; left: -90px; bottom: -140px;
+  background: radial-gradient(circle at 60% 40%, rgba(147, 197, 253, .32), rgba(147, 197, 253, 0) 70%);
+}
+@keyframes ffHeroFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-/* Keep CJK-heavy headings from rendering excessively heavy. */
+/* hero 文案在蓝底上全部反白 */
+.site-hero h1,
+.site-hero h2,
+.site-hero [class*="hero-headline"] {
+  background: linear-gradient(100deg, #fff 20%, #cfe0ff 55%, #fff 85%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important; background-clip: text !important;
+  color: transparent !important;
+  animation: ffTitleSheen 6s ease-in-out infinite;
+}
+@keyframes ffTitleSheen {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+.site-hero p,
+.site-hero [class*="text-gray-600"],
+.site-hero [class*="dark:text-gray-400"] { color: rgba(255, 255, 255, .85) !important; }
+.site-hero .hero-badge,
+.site-hero a[class*="rounded-full"]:not([class*="bg-primary"]) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .08)) !important;
+  border: 1px solid rgba(255, 255, 255, .32) !important;
+  color: #fff !important;
+}
+.site-hero a[class*="rounded-full"]:not([class*="bg-primary"]):hover {
+  background: rgba(255, 255, 255, .95) !important;
+  color: var(--ff-blue) !important;
+}
+
+/* hero 里的渐变按钮：第一个白渐变实底，第二个描边反白 */
+.site-hero .site-hero-actions a[class*="bg-primary-600"]:last-child {
+  background-image: none;
+  background-color: transparent;
+  color: #fff;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .75);
+}
+.site-hero .site-hero-actions a[class*="bg-primary-600"]:last-child:hover {
+  background-image: linear-gradient(135deg, #ffffff, #dbe7fb);
+  color: var(--ff-blue);
+  box-shadow: 0 8px 22px rgba(5, 20, 60, .35);
+}
+.site-hero .site-hero-actions a[class*="bg-primary-600"]:last-child:active {
+  background-image: linear-gradient(135deg, #cfdffb, #bcd2f7);
+  color: var(--ff-blue-deep);
+  box-shadow: 0 2px 8px rgba(5, 20, 60, .3);
+}
+.site-hero a[class*="bg-primary-600"] {
+  background-image: linear-gradient(135deg, #ffffff, #dbe7fb);
+  background-size: 160% 160%; background-position: 0% 0%;
+  background-color: transparent;
+  color: var(--ff-blue);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(5, 20, 60, .25);
+  transition: transform .15s ease, box-shadow .15s ease, background-position .25s ease;
+}
+.site-hero a[class*="bg-primary-600"]:hover {
+  background-image: linear-gradient(135deg, #ffffff, #dbe7fb);
+  background-position: 100% 100%;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(5, 20, 60, .35);
+}
+.site-hero a[class*="bg-primary-600"]:active {
+  transform: translateY(0) scale(.96);
+  background-image: linear-gradient(135deg, #cfdffb, #bcd2f7);
+  box-shadow: 0 2px 8px rgba(5, 20, 60, .3);
+}
+
+/* SECTION: feature cards（上移叠压 + hover 渐变提示条） */
+main#content .hextra-feature-grid {
+  position: relative; z-index: 2;
+  margin-top: -4.6rem;
+  width: 100%;
+}
+.hextra-feature-card {
+  border-radius: var(--radius, 16px);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.hextra-feature-card::after {
+  content: ""; position: absolute; left: 0; top: 0; height: 4px; width: 100%;
+  background: var(--grad-brand);
+  border-radius: inherit;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .25s ease;
+  pointer-events: none; z-index: 1;
+}
+.hextra-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(16, 42, 94, .18);
+}
+.hextra-feature-card:hover::after { transform: scaleX(1); }
+.hextra-feature-card:active { transform: translateY(-2px) scale(.985); }
+.hextra-feature-card h3 svg,
+.hextra-feature-card h3 span:first-child {
+  transition: transform .25s ease;
+}
+.hextra-feature-card:hover h3 svg { color: var(--ff-blue-bright); transform: scale(1.08); }
+
+/* SECTION: content pages（标题竖条 / 强调 / 表格 / 引用 / 代码块） */
+main#content > h1,
+main#content h2 { color: var(--ff-ink); }
 main#content h2 {
-  font-weight: 600;
+  border-left: 4px solid transparent;
+  border-image: var(--grad-accent) 1;
+  padding-left: .8rem;
+}
+.dark main#content h2 { color: #e7eefb; }
+
+/* blockquote：浅蓝渐变底 + 渐变左边条 */
+main#content blockquote {
+  background: var(--grad-head);
+  border-left: 4px solid transparent;
+  border-image: var(--grad-accent) 1;
+  border-radius: 0 10px 10px 0;
+  padding: .8rem 1.1rem;
+}
+.dark main#content blockquote { color: #d7e1f2; }
+
+/* 表格：渐变表头 */
+main#content table th {
+  background: var(--grad-head);
+  font-weight: 700;
+}
+main#content tbody tr { transition: background .15s ease; }
+main#content tbody tr:hover { background: rgba(37, 99, 235, .06); }
+
+/* 代码块：外层渐变壳，不改 chroma 内部配色 */
+.hextra-code-block > div,
+.hextra-code-block > pre {
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(16, 42, 94, .1);
+  border: 1px solid transparent;
+  background-image: linear-gradient(#fff, #fff), var(--grad-brand);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.dark .hextra-code-block > div,
+.dark .hextra-code-block > pre {
+  background-image: linear-gradient(#0d1728, #0d1728), var(--grad-brand);
+}
+
+/* 正文内联链接 hover 下划线淡入 */
+main#content .content a:not(.hextra-card):not([class*="rounded"]) {
+  text-underline-offset: 4px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color .15s ease, color .15s ease;
+}
+main#content .content a:not(.hextra-card):not([class*="rounded"]):hover {
+  text-decoration-color: currentColor;
+}
+
+/* 全局按钮按压回弹（hero 外的一级按钮也统一） */
+a[class*="bg-primary-600"] {
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+a[class*="bg-primary-600"]:active { transform: scale(.96); }
+
+/* SECTION: footer（深蓝渐变 + 顶部流动渐变线） */
+.hextra-footer {
+  background: var(--grad-footer);
+  color: rgba(255, 255, 255, .78);
+}
+.hextra-footer::before {
+  content: ""; display: block; height: 3px;
+  background: linear-gradient(90deg, var(--ff-blue-sky), var(--ff-blue), var(--ff-blue-deep), var(--ff-blue-sky));
+  background-size: 300% 100%;
+  animation: ffFooterFlow 10s linear infinite;
+}
+@keyframes ffFooterFlow { to { background-position: 300% 0; } }
+.hextra-footer hr { display: none; }
+.hextra-footer,
+.hextra-footer a,
+.hextra-footer [class*="text-gray"] { color: rgba(255, 255, 255, .78); }
+.hextra-footer a:hover { color: #fff; }
+/* 语言/主题切换控件：按钮反白，但白底下拉菜单保持深色字 */
+.hextra-footer button:hover { color: #fff; }
+.hextra-footer .hextra-language-options,
+.hextra-footer .hextra-nav-menu-items { color: var(--ff-ink); }
+.hextra-footer .hextra-language-options a,
+.hextra-footer .hextra-language-options li,
+.hextra-footer .hextra-language-options span { color: var(--ff-ink); }
+.hextra-footer .hextra-language-options a:hover { background: var(--grad-head); color: var(--ff-blue-deep); }
+.hextra-footer [class*="hextra-cards"] a,
+.hextra-footer .hextra-card { color: var(--ff-ink); }
+.hextra-footer svg { color: inherit; }
+.hextra-footer select,
+.hextra-footer button[class*="theme"],
+.hextra-footer [class*="hextra-lang"] {
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, .3);
+}
+.hextra-footer option { color: var(--ff-ink); }
+
+/* SECTION: layout（保留既有排版规则） */
+main#content > h1 { text-align: left; }
+main#content > .content { max-width: 46rem; }
+.site-hero-actions {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+  justify-content: center; margin-bottom: 0; margin-top: 1.6rem;
+}
+main#content h2 { font-weight: 600; }
+
+/* SECTION: motion（尊重减少动画偏好） */
+@media (prefers-reduced-motion: reduce) {
+  .site-hero, .site-hero h1, .site-hero [class*="hero-headline"], .hextra-footer::before {
+    animation: none !important;
+  }
+  * { transition-duration: .01ms !important; }
 }

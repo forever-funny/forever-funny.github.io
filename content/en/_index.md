@@ -4,6 +4,8 @@ layout: hextra-home
 description: Tech notes, projects, and essays.
 ---
 
+<div class="site-hero">
+
 {{< hextra/hero-badge >}}
   Personal site · notes and projects
 {{< /hextra/hero-badge >}}
@@ -14,7 +16,7 @@ description: Tech notes, projects, and essays.
 {{< /hextra/hero-headline >}}
 </div>
 
-<div class="hx:mb-8">
+<div class="hx:mb-2">
 {{< hextra/hero-subtitle >}}
   A place for technical notes from work, things in progress, and the books and sites worth keeping.
 {{< /hextra/hero-subtitle >}}
@@ -23,6 +25,8 @@ description: Tech notes, projects, and essays.
 <div class="site-hero-actions">
   {{< hextra/hero-button text="Browse notes" link="docs" >}}
   {{< hextra/hero-button text="See projects" link="projects" >}}
+</div>
+
 </div>
 
 {{< hextra/feature-grid cols="4" >}}

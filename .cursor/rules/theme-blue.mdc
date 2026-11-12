@@ -1,25 +1,38 @@
 ---
-description: 本工程以蓝色为统一基础风格，新增页面与组件必须遵循
+description: 本工程以蓝色渐变（方案A v2）为统一基础风格，新增页面与组件必须遵循
 alwaysApply: true
 ---
 
-# 基础风格：蓝色主题（2026-11 起生效，替代早期橙色）
+# 基础风格：蓝色渐变（方案A v2，2026-11 起生效，替代早期橙色与平涂蓝）
 
-本站点（Hugo + Hextra）统一以蓝色为基础风格。所有新增页面、按钮、链接、图标、插图及后续改动都必须遵循蓝色，不得再引入橙色（hue ≈ 24deg / #c6570d）或其他品牌色。
+本站点（Hugo + Hextra）统一以「蓝色渐变为主、白色为纸」为基础风格。所有新增页面、按钮、链接、图标、插图及后续改动都必须遵循蓝色渐变体系，不得再引入橙色（hue ≈ 24deg / #c6570d）或其他品牌色。原型稿：`站点排版原型-方案A-20261112-124719/`（仅设计参考，不参与构建）。
 
-## 主题色定义（唯一来源）
+## 渐变色板（唯一来源：`assets/css/custom.css` 的 `--ff-*` / `--grad-*` 变量）
 
-- `assets/css/custom.css` 通过 `--primary-hue / --primary-saturation / --primary-lightness` 覆盖 Hextra 主色：
-  - 浅色模式：`221deg / 83% / 42%`（加深保证白底链接与按钮 ≥ 4.5:1 对比度）
-  - 深色模式：`221deg / 83% / 60%`（提亮保证暗背景可读性）
-- 按钮、链接、hero 区、强调色等主色元素自动跟随变量，禁止在页面或组件里硬编码颜色值。
+- 色阶：亮蓝 `#2563eb` → 主蓝 `#1d4ed8` → 天蓝 `#3b82f6` → 深蓝 `#0f2b6b`；深色模式对应提亮（`#60a5fa` / `#3b82f6` / `#1e3a8a`）。
+- 渐变令牌：`--grad-hero`（首屏幕布，流动动画）、`--grad-brand`（按钮/卡片提示条/图标强调）、`--grad-accent`（标题竖条/导航下划线/引用边条，纵向）、`--grad-head`（表头/引用块浅蓝渐变）、`--grad-footer`（页脚深蓝渐变）。
+- Hextra 主色变量 `--primary-hue/sat/lightness` 保持 221deg / 83%（浅色 42%、深色 60%），保证自动派生的 primary-* 色阶仍是蓝系。
+- 页面底为竖向浅蓝灰渐变（`body` 固定背景），卡片纯白。
+- **禁止在页面、组件或内容里硬编码颜色值**，一律引用上述变量。
+
+## 已落地的风格要素
+
+- 首页首屏：`content/{zh-cn,en}/_index.md` 用 `<div class="site-hero">` 包裹 hero 区 → 全宽蓝渐变幕布 + 白色流光大标题 + 玻璃徽章 + 一实一虚两个按钮（hover 上浮、active 回弹）。
+- feature 卡片：hover 上浮 + 顶部渐变提示条展开；代码块/表格/引用块带渐变描边或渐变底。
+- 导航：文字菜单项 hover/激活有渐变下划线（选择器锚定 `class*="hx:text-sm"`，Hextra 升级需复查）。
+- 页脚：深蓝渐变 + 顶部流动渐变线。
+- 动效统一：hover `translateY(-2px)`、active `scale(.96)`、150ms ease；`prefers-reduced-motion` 下自动关闭动画。
+- 浏览器染色：`layouts/partials/custom/head-end.html` 输出 `theme-color`（浅色 `#1d4ed8`、深色 `#0f2b6b`）。
 
 ## 品牌图标（FF 双字母）
 
-- 全部品牌图标（logo.svg / logo-dark.svg / favicon 系列 / apple-touch / android-chrome / og.png）由 `scripts/gen-brand-assets.py` 统一生成，脚本内 `BRAND = #1d4ed8`（blue-700）、`BRAND_DARK = #3b82f6`（blue-500）。
-- 改色流程：改脚本常量 → 在仓库根目录跑 `python scripts/gen-brand-assets.py` → 同步 `assets/css/custom.css` 变量与 `static/site.webmanifest` 的 `theme_color` → 更新本规则。
+- 由 `scripts/gen-brand-assets.py` 统一生成（logo / favicon / apple-touch / android-chrome / og.png），脚本内 `BRAND = #1d4ed8`、`BRAND_DARK = #3b82f6`。
 - `static/site.webmanifest` 的 `theme_color` 保持 `#1d4ed8`。
 
 ## 变更流程
 
-如需再次调整基础色，按上面的改色流程整体走一遍，禁止只改其中一个文件造成配色分裂。
+如需再次调整基础色：改 `assets/css/custom.css` 变量 → 改 `scripts/gen-brand-assets.py` 常量并重跑 → 同步 `site.webmanifest` 与 `head-end.html` 的 theme-color → 更新本规则。禁止只改其中一个文件造成配色分裂。
+
+## 验证
+
+- 构建：`hugo --quiet`；链接：`node scripts/check-links.mjs`（CI 部署门槛）。

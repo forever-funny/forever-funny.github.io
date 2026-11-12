@@ -4,6 +4,8 @@ layout: hextra-home
 description: 技术笔记、项目与随笔的入口。
 ---
 
+<div class="site-hero">
+
 {{< hextra/hero-badge >}}
   个人站点 · 笔记与项目
 {{< /hextra/hero-badge >}}
@@ -14,7 +16,7 @@ description: 技术笔记、项目与随笔的入口。
 {{< /hextra/hero-headline >}}
 </div>
 
-<div class="hx:mb-8">
+<div class="hx:mb-2">
 {{< hextra/hero-subtitle >}}
   把工作里的技术判断整理成笔记，也放上正在做的东西和随手记下的书、站点。
 {{< /hextra/hero-subtitle >}}
@@ -23,6 +25,8 @@ description: 技术笔记、项目与随笔的入口。
 <div class="site-hero-actions">
   {{< hextra/hero-button text="看笔记" link="docs" >}}
   {{< hextra/hero-button text="看项目" link="projects" >}}
+</div>
+
 </div>
 
 {{< hextra/feature-grid cols="4" >}}
