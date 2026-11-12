@@ -1,0 +1,22 @@
+---
+description: 本工程以蓝色为统一基础风格，新增页面与组件必须遵循
+alwaysApply: true
+---
+
+# 基础风格：蓝色主题（自 2026-11-12 起生效）
+
+本站点（Hugo + Hextra）已弃用早期的橙色配色，统一以蓝色为基础风格。所有新增页面、按钮、链接、图标、插图及后续改动都必须遵循蓝色，不得再引入橙色（hue ≈ 24deg）或其他品牌色。
+
+## 主题色定义（唯一来源）
+
+- 变量定义在 `assets/css/custom.css`，通过 `--primary-hue / --primary-saturation / --primary-lightness` 覆盖 Hextra 主色（当前为 221deg / 83% / 53%，近似 Tailwind blue-600）。
+- 按钮、链接、hero 区、强调色等主色元素自动跟随变量，禁止在页面或组件里硬编码颜色值。
+
+## Logo
+
+- 浅色模式：`static/images/logo.svg`，蓝底 `#2563eb` + 白字。
+- 深色模式：`static/images/logo-dark.svg`，蓝底 `#3b82f6`（提亮一档保证暗背景对比度）+ 白字。
+
+## 变更流程
+
+如需再次调整基础色，只改 `assets/css/custom.css` 的三个变量与两个 Logo 文件的底色，并同步更新本规则。

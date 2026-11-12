@@ -3,7 +3,8 @@
 
 :root,
 .dark {
-  --primary-hue: 24deg;
-  --primary-saturation: 88%;
-  --primary-lightness: 46%;
+  /* 统一基础风格：蓝色主题色（近似 Tailwind blue-600） */
+  --primary-hue: 221deg;
+  --primary-saturation: 83%;
+  --primary-lightness: 53%;
 }
