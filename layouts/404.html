@@ -1,0 +1,88 @@
+{{ define "main" }}
+  <style>
+    .error-page {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 8rem;
+      text-align: center;
+    }
+    .error-page .error-code {
+      margin: 0;
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #b04a0b;
+    }
+    .dark .error-page .error-code {
+      color: #f08a4b;
+    }
+    .error-page h1 {
+      margin: 1.5rem 0 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1c1917;
+    }
+    .dark .error-page h1 {
+      color: #f5f5f4;
+    }
+    .error-page p {
+      margin: 1rem 0 0;
+      color: #57534e;
+      line-height: 1.7;
+    }
+    .error-page .error-en {
+      font-size: 0.9rem;
+      color: #78716c;
+    }
+    .dark .error-page p {
+      color: #a8a29e;
+    }
+    .dark .error-page .error-en {
+      color: #78716c;
+    }
+    .error-page .error-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+    .error-page .error-links a {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid #d6d3d1;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1c1917;
+      text-decoration: none;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .error-page .error-links a:hover {
+      border-color: #b04a0b;
+      background-color: #fafaf9;
+    }
+    .dark .error-page .error-links a {
+      border-color: #44403c;
+      color: #f5f5f4;
+    }
+    .dark .error-page .error-links a:hover {
+      border-color: #f08a4b;
+      background-color: #292524;
+    }
+  </style>
+
+  <div class="error-page">
+    <p class="error-code">404</p>
+    <h1>{{ T "pageNotFound" | default "页面不存在" }}</h1>
+    <p>{{ T "pageNotFoundDesc" | default "链接可能已经失效，或者页面已经移动。" }}</p>
+    <p class="error-en">Page not found. The link may be broken, or the page may have moved.</p>
+    <div class="error-links">
+      <a href="{{ "/" | relLangURL }}">{{ T "backHome" | default "返回首页" }}</a>
+      <a href="{{ "docs/" | relLangURL }}">笔记</a>
+      <a href="{{ "blog/" | relLangURL }}">随笔</a>
+      <a href="{{ "en/" | relLangURL }}">English</a>
+    </div>
+  </div>
+{{ end }}

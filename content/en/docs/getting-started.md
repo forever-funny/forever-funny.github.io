@@ -19,7 +19,7 @@ cd forever-funny.github.io
 hugo server -D
 ```
 
-Default language is Chinese (`/zh-cn/`). English pages are under `/en/`.
+Default language is Chinese (`/`). English pages are under `/en/`.
 
 ## Add a page
 

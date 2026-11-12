@@ -1,6 +1,8 @@
 ---
 title: 常用网站
 weight: 1
+aliases:
+  - /zh-cn/blog/useful-websites/
 description: 收藏与常用站点
 ---
 
